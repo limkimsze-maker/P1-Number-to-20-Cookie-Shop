@@ -50,10 +50,10 @@
     .character-frame,.seller-frame{max-width:210px;height:112px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf0,#ffe0f1);overflow:hidden}
     .seller-frame{max-width:220px;height:118px}
     .avatar-stack{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;width:100%;height:100%;padding:8px 8px 6px}
-    .character-art{max-width:100%;max-height:78px;object-fit:contain;display:block}
-    .mini-seller-img{width:100%;height:100%;object-fit:contain;display:block}
+    .character-art{max-width:100%;max-height:78px;object-fit:contain;display:block;visibility:hidden}
+    .mini-seller-img{width:100%;height:100%;object-fit:contain;display:block;visibility:hidden}
     .avatar-emoji{width:92px;height:68px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:44px}
-    .avatar-badge{max-width:92%;background:#fff7e8;border:2px solid var(--brown);border-radius:999px;padding:3px 8px;font-size:10px;font-weight:900;color:#6a3151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .avatar-badge{max-width:96%;background:#fffdf2;border:2px solid var(--brown);border-radius:14px;padding:6px 10px;font-size:13px;font-weight:900;color:#6a3151;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15;text-align:center;box-shadow:0 2px 0 rgba(255,255,255,.6) inset}
 
     .main-card{padding:6px 6px;text-align:center;flex:0 0 auto}
     .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:10px;font-weight:800;line-height:1.18}
@@ -164,11 +164,11 @@
     <div class="progress-wrap"><div class="section-label">Level Progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
     <div class="story-nav"><div class="story-pill active" id="pill1">1. Order</div><div class="story-pill" id="pill2">2. Bake</div><div class="story-pill" id="pill3">3. Baker</div></div>
 
-    <section class="frame active" id="frame1"><div class="frame-title">Customer Order</div><div class="character-frame"><div class="avatar-stack"><img id="customerArt" class="character-art" src="customer_boy.png" alt="Customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="avatar-emoji" id="customerEmojiFallback" style="display:none;">🧒</div><div class="avatar-badge">Happy Customer</div></div></div><div class="main-card"><div class="dialogue" id="customerLine">A new cookie shop order is ready.</div><div class="equation-big" id="orderEquation">Arrange the cookie bags in order.</div><div class="help-line" id="orderHelp">Read the order, then go to the bake screen.</div></div></section>
+    <section class="frame active" id="frame1"><div class="frame-title">Customer Order</div><div class="character-frame"><div class="avatar-stack"><img id="customerArt" class="character-art" src="customer_boy.png" alt="Customer"><div class="avatar-emoji" id="customerEmojiFallback" style="display:none;">🧒</div><div class="avatar-badge" id="customerBadge">Happy Customer</div></div></div><div class="main-card"><div class="dialogue" id="customerLine">A new cookie shop order is ready.</div><div class="equation-big" id="orderEquation">Arrange the cookie bags in order.</div><div class="help-line" id="orderHelp">Read the order, then go to the bake screen.</div></div></section>
 
-    <section class="frame" id="frame2"><div class="frame-title">Bake the Cookies</div><div class="main-card"><div class="dialogue">Order reminder</div><div class="equation-face-row"><div class="equation-mini" id="countEquation">Arrange the cookie bags in order.</div><div class="mini-seller-wrap" id="miniSellerWrap"><img id="miniSellerImg" class="mini-seller-img" src="baker_main.png" alt="Baker" onerror="this.style.display='none'; this.parentElement.textContent='👩‍🍳';"></div></div><div class="help-line" id="countHelp">Tap an answer, then press Check.</div></div><div class="play-stage" id="playStage"></div><div class="reasoning-panel" id="reasoningPanel"><div class="reasoning-title" id="reasoningTitle">Nice baking!</div><div class="reasoning-line" id="reasoningLine">Let’s keep helping customers.</div></div><div class="answer-panel"><div class="answer-area"><div class="answer-grid" id="answerGrid"></div><div class="controls"><button class="game-btn btn-check" id="checkBtn" type="button">✔ Check</button><button class="game-btn btn-hint" id="hintBtn" type="button">💡 Hint</button><button class="game-btn btn-clear" id="clearBtn" type="button">✖ Clear</button><button class="game-btn btn-next" id="nextBtn" type="button">➡ Next</button></div></div></div></section>
+    <section class="frame" id="frame2"><div class="frame-title">Bake the Cookies</div><div class="main-card"><div class="dialogue">Order reminder</div><div class="equation-face-row"><div class="equation-mini" id="countEquation">Arrange the cookie bags in order.</div><div class="mini-seller-wrap" id="miniSellerWrap"><img id="miniSellerImg" class="mini-seller-img" src="baker_main.png" alt="Baker"></div></div><div class="help-line" id="countHelp">Tap an answer, then press Check.</div></div><div class="play-stage" id="playStage"></div><div class="reasoning-panel" id="reasoningPanel"><div class="reasoning-title" id="reasoningTitle">Nice baking!</div><div class="reasoning-line" id="reasoningLine">Let’s keep helping customers.</div></div><div class="answer-panel"><div class="answer-area"><div class="answer-grid" id="answerGrid"></div><div class="controls"><button class="game-btn btn-check" id="checkBtn" type="button">✔ Check</button><button class="game-btn btn-hint" id="hintBtn" type="button">💡 Hint</button><button class="game-btn btn-clear" id="clearBtn" type="button">✖ Clear</button><button class="game-btn btn-next" id="nextBtn" type="button">➡ Next</button></div></div></div></section>
 
-    <section class="frame" id="frame3"><div class="frame-title">Baker</div><div class="seller-frame"><div class="avatar-stack"><img id="bakerArt" class="character-art" src="baker_main.png" alt="Cookie baker" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="avatar-emoji" id="bakerEmojiFallback" style="display:none;">👩‍🍳</div><div class="avatar-badge">Cookie Baker</div></div></div><div class="speech" id="sellerSpeech">New cookie shop order ready. Solve it first.</div><div class="note" id="missionLine">Level 1: Put the cookie bags in number order.</div><div class="note" id="scoreLine">Total score: 0 / 24</div></section>
+    <section class="frame" id="frame3"><div class="frame-title">Baker</div><div class="seller-frame"><div class="avatar-stack"><img id="bakerArt" class="character-art" src="baker_main.png" alt="Cookie baker"><div class="avatar-emoji" id="bakerEmojiFallback" style="display:none;">👩‍🍳</div><div class="avatar-badge" id="bakerBadge">Cookie Baker</div></div></div><div class="speech" id="sellerSpeech">New cookie shop order ready. Solve it first.</div><div class="note" id="missionLine">Level 1: Put the cookie bags in number order.</div><div class="note" id="scoreLine">Total score: 0 / 24</div></section>
 
     <div class="story-actions"><button class="game-btn btn-clear" id="backBtn" type="button">⬅ Back</button><button class="game-btn btn-next" id="forwardBtn" type="button">Next ➡</button></div>
     <div class="feedback" id="feedback">Welcome to Cookie Tray Shop!</div>
@@ -194,7 +194,7 @@
     window.addEventListener('orientationchange',setAppHeight);
 
     const $=id=>document.getElementById(id);
-    const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),bakerArt=$('bakerArt'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
+    const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),customerBadge=$('customerBadge'),bakerArt=$('bakerArt'),bakerBadge=$('bakerBadge'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
 
     const state={soundOn:true,speechOn:true,currentStep:1,currentLevel:1,currentQuestionIndex:0,totalScore:0,totalQuestions:24,answered:0,selectedAnswer:null,questionResolved:false,levels:null,levelCorrect:0,levelRewardsUnlocked:{}};
 
@@ -413,10 +413,32 @@
     }
 
     function customerAssetForQuestion(){return (state.currentLevel + state.currentQuestionIndex) % 2 === 0 ? 'customer_girl.png' : 'customer_boy.png';}
+    function wireImage(imgEl, src, fallbackEmojiId, badgeEl, badgeText){
+      if(!imgEl) return;
+      const fallback = fallbackEmojiId ? $(fallbackEmojiId) : null;
+      imgEl.style.visibility = 'hidden';
+      imgEl.onload = ()=>{
+        imgEl.style.visibility = 'visible';
+        if(fallback) fallback.style.display = 'none';
+        if(badgeEl && badgeText) badgeEl.textContent = badgeText;
+      };
+      imgEl.onerror = ()=>{
+        imgEl.style.visibility = 'hidden';
+        if(fallback) fallback.style.display = 'flex';
+        if(badgeEl && badgeText) badgeEl.textContent = badgeText;
+      };
+      imgEl.src = src;
+    }
     function applyCharacterArt(){
-      if(customerArt){customerArt.src=customerAssetForQuestion(); customerArt.style.display='block';}
-      if(bakerArt){bakerArt.src='baker_main.png'; bakerArt.style.display='block';}
-      if(miniSellerImg){miniSellerImg.src='baker_main.png'; miniSellerImg.style.display='block';}
+      const useGirl = (state.currentLevel + state.currentQuestionIndex) % 2 === 0;
+      wireImage(customerArt, useGirl ? 'customer_girl.png' : 'customer_boy.png', 'customerEmojiFallback', customerBadge, useGirl ? 'Happy Customer Girl' : 'Happy Customer Boy');
+      wireImage(bakerArt, 'baker_main.png', 'bakerEmojiFallback', bakerBadge, 'Cookie Baker');
+      if(miniSellerImg){
+        miniSellerImg.style.visibility = 'hidden';
+        miniSellerImg.onload = ()=>{ miniSellerImg.style.visibility = 'visible'; miniSellerWrap.textContent=''; miniSellerWrap.appendChild(miniSellerImg); };
+        miniSellerImg.onerror = ()=>{ miniSellerWrap.textContent='👩‍🍳'; };
+        miniSellerImg.src = 'baker_main.png';
+      }
     }
     function questionSpeechText(){
       return `${orderEquation.textContent}. ${countHelp.textContent}`;
