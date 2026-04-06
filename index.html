@@ -27,6 +27,9 @@
 
     .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0)}
     .app.show{display:flex}
+    @media (min-width:768px){
+      body.desktop-fit .app.show{position:fixed;left:50%;top:50%;width:560px;height:auto;min-height:0;max-height:none;margin:0;transform:translate(-50%,-50%) scale(var(--desktop-scale));transform-origin:center center;will-change:transform}
+    }
     .topbar,.progress-wrap,.frame,.feedback,.modal-card{background:var(--panel);border:3px solid var(--brown);border-radius:16px;box-shadow:var(--shadow)}
     .topbar{padding:3px 4px;flex:0 0 auto;position:relative}
     .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
@@ -207,9 +210,58 @@
 
   <script>
     function setAppHeight(){document.documentElement.style.setProperty('--app-h',window.innerHeight+'px')} 
+    function fitDesktopApp(){
+      const appVisible=app && app.classList.contains('show');
+      const isDesktop=window.innerWidth>=768 && appVisible;
+      document.body.classList.toggle('desktop-fit',isDesktop);
+      if(!appVisible){document.documentElement.style.setProperty('--desktop-scale','1');return}
+      if(!isDesktop){document.documentElement.style.setProperty('--desktop-scale','1');return}
+
+      const prevTransition=app.style.transition;
+      const prevTransform=app.style.transform;
+      const prevPosition=app.style.position;
+      const prevLeft=app.style.left;
+      const prevTop=app.style.top;
+      const prevWidth=app.style.width;
+      const prevHeight=app.style.height;
+      const prevMinHeight=app.style.minHeight;
+      const prevMaxHeight=app.style.maxHeight;
+
+      app.style.transition='none';
+      app.style.transform='none';
+      app.style.position='fixed';
+      app.style.left='0';
+      app.style.top='0';
+      app.style.width='560px';
+      app.style.height='auto';
+      app.style.minHeight='0';
+      app.style.maxHeight='none';
+
+      const naturalWidth=560;
+      const naturalHeight=Math.max(app.scrollHeight, app.getBoundingClientRect().height, 1);
+      const availableWidth=Math.max(320, window.innerWidth-24);
+      const availableHeight=Math.max(320, window.innerHeight-24);
+      const scale=Math.min(availableWidth/naturalWidth, availableHeight/naturalHeight, 1);
+      document.documentElement.style.setProperty('--desktop-scale', String(scale));
+
+      app.style.transition=prevTransition;
+      app.style.transform=prevTransform;
+      app.style.position=prevPosition;
+      app.style.left=prevLeft;
+      app.style.top=prevTop;
+      app.style.width=prevWidth;
+      app.style.height=prevHeight;
+      app.style.minHeight=prevMinHeight;
+      app.style.maxHeight=prevMaxHeight;
+    }
+    let fitDesktopRaf=0;
+    function requestFitDesktopApp(){
+      if(fitDesktopRaf) cancelAnimationFrame(fitDesktopRaf);
+      fitDesktopRaf=requestAnimationFrame(()=>{fitDesktopRaf=0;fitDesktopApp();});
+    }
     setAppHeight(); 
-    window.addEventListener('resize',setAppHeight); 
-    window.addEventListener('orientationchange',setAppHeight);
+    window.addEventListener('resize',()=>{setAppHeight();requestFitDesktopApp();}); 
+    window.addEventListener('orientationchange',()=>{setAppHeight();requestFitDesktopApp();});
 
     const $=id=>document.getElementById(id);
     const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),topScoreBox=$('topScoreBox'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),customerBadge=$('customerBadge'),bakerArt=$('bakerArt'),bakerBadge=$('bakerBadge'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
@@ -276,6 +328,7 @@
       [pill1,pill2,pill3].forEach((pill,idx)=>pill.classList.toggle('active',idx+1===step));
       [frame1,frame2,frame3].forEach((frame,idx)=>frame.classList.toggle('active',idx+1===step));
       syncNavButtons();
+      requestFitDesktopApp();
     }
 
     function cookieEl(small=false){const d=document.createElement('div');d.className=small?'cookie small':'cookie';return d}
@@ -505,6 +558,7 @@
 
       applyCharacterArt();
       setStep(1);
+      requestFitDesktopApp();
       if(state.speechOn){
         const thisQuestion=q;
         setTimeout(()=>{
@@ -665,7 +719,7 @@
 
     function sendScoreToSLS(){const payload={game:'Cookie Tray Shop — Numbers to 20!',score:state.totalScore,total:20,timestamp:new Date().toISOString()};console.log('SLS SCORE PAYLOAD',payload);feedback.className='feedback good';feedback.textContent=`Score ready to send: ${state.totalScore}/20. (Demo button logs the payload to the browser console.)`;closeModal(roundModal)}
 
-    const openModal=modal=>{modal.classList.add('show');const card=modal.querySelector('.modal-card');if(card)card.scrollTop=0},closeModal=modal=>{modal.classList.remove('show')};
+    const openModal=modal=>{modal.classList.add('show');const card=modal.querySelector('.modal-card');if(card)card.scrollTop=0;requestFitDesktopApp()},closeModal=modal=>{modal.classList.remove('show');requestFitDesktopApp()};
 
     function playAudio(kind){if(!state.soundOn)return;const map={correct:audioCorrect,wrong:audioWrong,drop:audioDrop,orderBell:audioOrderBell,tada:audioTada,bag:audioBag,thud:audioThud};const el=map[kind];if(!el)return;try{el.pause();el.currentTime=0;el.play().catch(()=>{})}catch(e){}}
     function launchConfetti(count=28){confettiLayer.innerHTML='';const colors=['#ff6fae','#ffd766','#6ed3ff','#8fe388','#c7a3ff','#ffad66'];for(let i=0;i<count;i++){const piece=document.createElement('div');piece.className='confetti-piece';piece.style.left=(Math.random()*100)+'vw';piece.style.width=(7+Math.random()*5)+'px';piece.style.height=(10+Math.random()*8)+'px';piece.style.background=colors[i%colors.length];piece.style.animationDuration=(1.9+Math.random()*1.8)+'s';piece.style.animationDelay=(Math.random()*0.2)+'s';confettiLayer.appendChild(piece)}setTimeout(()=>{confettiLayer.innerHTML='';},3200)}
@@ -705,7 +759,7 @@
     if('speechSynthesis' in window){window.speechSynthesis.onvoiceschanged=()=>{}};
 
     coverStartBtn.addEventListener('click',()=>{coverScreen.classList.add('hidden');app.classList.add('show');state.levels=buildLevels();
-      updateScoreDisplays();renderCurrentQuestion()});
+      updateScoreDisplays();renderCurrentQuestion();requestFitDesktopApp()});
     soundToggleBtn.addEventListener('click',()=>{state.soundOn=!state.soundOn;soundToggleBtn.textContent=state.soundOn?'🔊':'🔇'});
     voiceToggleBtn.addEventListener('click',()=>{state.speechOn=!state.speechOn;voiceToggleBtn.textContent=state.speechOn?'🗣️':'🔕';if(state.speechOn)speakInstruction(questionSpeechText());else if('speechSynthesis' in window)window.speechSynthesis.cancel()});
     infoBtn.addEventListener('click',()=>openModal(infoModal));
@@ -717,6 +771,7 @@
     clearBtn.addEventListener('click',clearSelection);
     nextBtn.addEventListener('click',moveNext);
     document.addEventListener('click',e=>{if(e.target===infoModal)closeModal(infoModal)});
+    requestFitDesktopApp();
   </script>
 </body>
 </html>
