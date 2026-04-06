@@ -28,7 +28,17 @@
     .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0)}
     .app.show{display:flex}
     @media (min-width:768px){
-      body.desktop-fit .app.show{position:fixed;left:50%;top:50%;width:560px;height:auto;min-height:0;max-height:none;margin:0;transform:translate(-50%,-50%) scale(var(--desktop-scale));transform-origin:center center;will-change:transform}
+      body.desktop-fit .app.show{position:fixed;left:50%;top:50%;width:min(980px,calc(100vw - 24px));max-width:980px;height:calc(100vh - 24px);max-height:calc(100vh - 24px);min-height:0;margin:0;transform:translate(-50%,-50%);transform-origin:center center;will-change:auto;padding:8px 10px;gap:6px}
+      body.desktop-fit .cover-card{width:min(900px,100%)}
+      body.desktop-fit .character-frame{max-width:240px;height:104px}
+      body.desktop-fit .seller-frame{max-width:250px;height:110px}
+      body.desktop-fit .play-stage{overflow:hidden}
+      body.desktop-fit .worksheet,body.desktop-fit .compare-sheet{max-width:640px}
+      body.desktop-fit .compare-board{max-width:620px}
+      body.desktop-fit .cookie-tray{width:min(100%,420px)}
+      body.desktop-fit .bag-sort-wrap{max-width:760px;margin:0 auto}
+      body.desktop-fit .answer-grid{grid-auto-rows:minmax(40px,auto)}
+      body.desktop-fit .story-actions .game-btn{font-size:12px}
     }
     .topbar,.progress-wrap,.frame,.feedback,.modal-card{background:var(--panel);border:3px solid var(--brown);border-radius:16px;box-shadow:var(--shadow)}
     .topbar{padding:3px 4px;flex:0 0 auto;position:relative}
@@ -214,45 +224,7 @@
       const appVisible=app && app.classList.contains('show');
       const isDesktop=window.innerWidth>=768 && appVisible;
       document.body.classList.toggle('desktop-fit',isDesktop);
-      if(!appVisible){document.documentElement.style.setProperty('--desktop-scale','1');return}
-      if(!isDesktop){document.documentElement.style.setProperty('--desktop-scale','1');return}
-
-      const prevTransition=app.style.transition;
-      const prevTransform=app.style.transform;
-      const prevPosition=app.style.position;
-      const prevLeft=app.style.left;
-      const prevTop=app.style.top;
-      const prevWidth=app.style.width;
-      const prevHeight=app.style.height;
-      const prevMinHeight=app.style.minHeight;
-      const prevMaxHeight=app.style.maxHeight;
-
-      app.style.transition='none';
-      app.style.transform='none';
-      app.style.position='fixed';
-      app.style.left='0';
-      app.style.top='0';
-      app.style.width='560px';
-      app.style.height='auto';
-      app.style.minHeight='0';
-      app.style.maxHeight='none';
-
-      const naturalWidth=560;
-      const naturalHeight=Math.max(app.scrollHeight, app.getBoundingClientRect().height, 1);
-      const availableWidth=Math.max(320, window.innerWidth-24);
-      const availableHeight=Math.max(320, window.innerHeight-24);
-      const scale=Math.min(availableWidth/naturalWidth, availableHeight/naturalHeight, 1);
-      document.documentElement.style.setProperty('--desktop-scale', String(scale));
-
-      app.style.transition=prevTransition;
-      app.style.transform=prevTransform;
-      app.style.position=prevPosition;
-      app.style.left=prevLeft;
-      app.style.top=prevTop;
-      app.style.width=prevWidth;
-      app.style.height=prevHeight;
-      app.style.minHeight=prevMinHeight;
-      app.style.maxHeight=prevMaxHeight;
+      document.documentElement.style.setProperty('--desktop-scale','1');
     }
     let fitDesktopRaf=0;
     function requestFitDesktopApp(){
