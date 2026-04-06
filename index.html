@@ -25,7 +25,7 @@
     .cover-actions{display:flex;justify-content:center;margin-top:12px}
     .start-btn{min-width:220px;padding:10px 16px;border:3px solid var(--brown);border-radius:999px;cursor:pointer;background:linear-gradient(180deg,#fff2a8,#ffb9d8);font-size:28px;font-weight:900;color:#6a3151}
 
-    .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(180deg,#fff7ef,#ffdff0)}
+    .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0)}
     .app.show{display:flex}
     .topbar,.progress-wrap,.frame,.feedback,.modal-card{background:var(--panel);border:3px solid var(--brown);border-radius:16px;box-shadow:var(--shadow)}
     .topbar{padding:3px 4px;flex:0 0 auto}
@@ -43,10 +43,10 @@
     .story-pill{flex:1 1 0;border:2px solid var(--brown);border-radius:999px;background:#fff7e8;color:#6a3151;font-size:12px;font-weight:900;padding:3px 2px;text-align:center}
     .story-pill.active{background:#dff7ff}
 
-    .frame{display:none;flex:1 1 auto;min-height:0;padding:4px;overflow:hidden}
+    .frame{display:none;flex:1 1 auto;min-height:0;padding:4px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.46),rgba(255,240,248,.5)),url('cookie_shop.png') center center/cover no-repeat;border-radius:16px}
     .frame.active{display:flex;flex-direction:column;gap:4px}
     .frame-title{text-align:center;font-size:11px;font-weight:900;color:#a04271}
-    .character-frame,.seller-frame,.main-card,.note,.speech,.play-stage,.answer-panel,.reasoning-panel{width:100%;background:#fff7fb;border:2px solid var(--brown);border-radius:14px}
+    .character-frame,.seller-frame,.main-card,.note,.speech,.play-stage,.answer-panel,.reasoning-panel{width:100%;background:rgba(255,247,251,.88);border:2px solid var(--brown);border-radius:14px;backdrop-filter:blur(1px)}
     .character-frame,.seller-frame{max-width:210px;height:112px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf0,#ffe0f1);overflow:hidden}
     .seller-frame{max-width:220px;height:118px}
     .avatar-stack{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;width:100%;height:100%;padding:8px 8px 6px}
@@ -64,7 +64,7 @@
     .mini-seller-wrap.good{background:#e7f8ea;border-color:var(--good)}
     .mini-seller-wrap.bad{background:#ffe6e0;border-color:var(--bad)}
 
-    .play-stage{flex:1 1 auto;min-height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf5,#fff7fd);border:2px solid #e3b6c7;padding:4px;overflow:auto;position:relative}
+    .play-stage{flex:1 1 auto;min-height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(255,250,245,.46),rgba(255,247,253,.5)),url('cookie_shop.png') center center/cover no-repeat;border:2px solid #e3b6c7;padding:4px;overflow:auto;position:relative}
     .play-stage.good{box-shadow:0 0 0 4px rgba(255,255,255,.45),0 0 20px rgba(255,188,214,.72)}
     .play-stage.bad{background:#fff6f4}
 
@@ -76,7 +76,15 @@
     .answer-panel{padding:3px;display:grid;grid-template-columns:1fr;gap:3px;align-items:stretch;background:rgba(255,250,243,.98);box-shadow:0 6px 14px rgba(123,75,42,.12);flex:0 0 auto}
     .answer-area{height:100%;min-height:0;display:grid;grid-template-rows:auto auto;gap:3px}
     .answer-grid{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;grid-auto-rows:minmax(44px,auto)}
-    .option-btn,.bag-card{width:100%;min-height:44px;padding:4px 4px;border:2px solid var(--brown);border-radius:12px;background:linear-gradient(180deg,#fffefb,#fff3e7);color:#6a3151;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900}
+    .option-btn{width:100%;min-height:44px;padding:4px 4px;border:2px solid var(--brown);border-radius:12px;background:linear-gradient(180deg,#fffefb,#fff3e7);color:#6a3151;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900}
+    .bag-card{position:relative;width:100%;min-height:88px;padding:12px 4px 10px;border:2px solid #9e6840;border-radius:16px 16px 12px 12px;background:linear-gradient(180deg,#fff8ea 0%,#f4e3c7 60%,#ead4b0 100%);color:#6a3151;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;box-shadow:0 3px 0 rgba(122,76,43,.18), inset 0 0 0 1px rgba(255,255,255,.55);overflow:hidden}
+    .bag-card::before{content:'';position:absolute;top:4px;left:50%;transform:translateX(-50%);width:58%;height:18px;border-radius:18px 18px 10px 10px;background:linear-gradient(180deg,#f8ead3,#ead2ae);border:2px solid rgba(142,94,55,.5);border-bottom:none}
+    .bag-card::after{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:42%;height:8px;border-radius:999px;background:#c58f58;box-shadow:0 1px 0 rgba(255,255,255,.35) inset}
+    .bag-knot{position:absolute;top:0;left:50%;width:24px;height:24px;transform:translateX(-50%);border-radius:4px 4px 10px 10px;background:linear-gradient(180deg,#ead6b9,#d2ae84);clip-path:polygon(50% 0,74% 18%,100% 100%,0 100%,26% 18%)}
+    .bag-number{position:relative;z-index:2;font-size:24px;line-height:1;color:#7a3954;margin-top:8px}
+    .bag-cookie-row{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:5px}
+    .bag-cookie{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 34% 34%, #f6d39a 0 36%, #c27b42 37% 100%);border:1.5px solid #8f582f;box-shadow:inset -2px -2px 0 rgba(110,66,29,.14)}
+    .bag-cookie::before{content:'';display:block;width:3px;height:3px;border-radius:50%;background:#5a3423;box-shadow:6px 2px 0 #5a3423,-1px 7px 0 #5a3423,7px 8px 0 #5a3423;margin:3px 0 0 4px}
     .option-btn .label{font-size:18px;line-height:1.05}
     .option-btn.active{background:linear-gradient(180deg,#eafaff,#dff7ff);box-shadow:inset 0 0 0 3px #8ac8ff}
 
@@ -98,12 +106,12 @@
 
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(70,40,20,.45);z-index:100}
     .modal.show{display:flex}
-    .modal-card{width:min(100%,520px);max-height:88vh;overflow:auto;background:linear-gradient(180deg,#fffef9,#fff1dc);padding:16px 14px;text-align:center}
+    .modal-card{width:min(100%,520px);max-height:88vh;overflow:auto;background:linear-gradient(180deg,#fffef9,#fff1dc);padding:16px 14px 12px;text-align:center;display:flex;flex-direction:column}
     .modal-title{font-size:24px;font-weight:900;color:#b85b18;margin-bottom:8px}
     .modal-badge{display:inline-block;padding:10px 16px;border-radius:999px;border:3px solid var(--brown);background:#fff9dd;font-size:18px;font-weight:900;margin:8px 0 12px}
     .modal-line{font-size:16px;font-weight:800;line-height:1.3;margin-bottom:10px}
     .report{width:100%;margin:0 auto 14px;background:#fff8eb;border:3px solid var(--brown);border-radius:18px;padding:12px 14px;text-align:left;font-size:15px;font-weight:800;line-height:1.4}
-    .modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;position:sticky;bottom:-2px;background:linear-gradient(180deg,rgba(255,254,249,.2),#fff1dc 28%);padding-top:10px;margin-top:8px;z-index:2}
 
     .cookie-tray{width:min(100%,320px);background:linear-gradient(180deg,#eab47b,#c97f47);border:3px solid #7a4324;border-radius:24px;padding:8px;box-shadow:inset 0 4px 0 rgba(255,255,255,.2), inset 0 -6px 0 rgba(0,0,0,.08)}
     .cookie-grid{display:grid;gap:4px}
@@ -116,8 +124,8 @@
     .cookie.small{max-width:28px;max-height:28px}
     .cookie::before{content:"";position:absolute;width:16%;height:16%;background:#5a3423;border-radius:50%;box-shadow:140% 50% 0 #5a3423,-70% 170% 0 #5a3423,160% 190% 0 #5a3423,40% 280% 0 #5a3423;top:20%;left:22%}
 
-    .bag-sort-wrap{width:100%;max-width:100%;display:grid;grid-template-rows:auto auto;gap:3px;align-items:start}
-    .bag-grid{display:grid;gap:2px;width:100%}
+    .bag-sort-wrap{width:100%;max-width:100%;display:grid;grid-template-rows:auto auto;gap:8px;align-items:start}
+    .bag-grid{display:grid;gap:6px;width:100%}
     .bag-slot{aspect-ratio:1.02/1;border-radius:10px;border:2px dashed rgba(88,48,24,.4);background:#fff8ea;color:#a04271;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;padding:1px;min-height:28px}
     .bag-slot.filled{border-style:solid;background:#fff1b8}
 
@@ -131,7 +139,11 @@
     .compare-color-row.top{padding-bottom:6px;border-bottom:2px dashed #b49b8d}
     .compare-label{font-weight:900;font-size:11px;color:#6a3557}
     .dot-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
-    .dot{width:100%;aspect-ratio:1/1;max-width:22px;border-radius:50%;margin:0 auto}
+    .dot{width:100%;aspect-ratio:1/1;max-width:22px;border-radius:50%;margin:0 auto;position:relative;border:2px solid #8f582f;box-shadow:inset -2px -2px 0 rgba(110,66,29,.14)}
+    .dot.red-cookie{background:radial-gradient(circle at 34% 34%, #ffb2c6 0 34%, #ff2f57 35% 100%);border-color:#b32045}
+    .dot.brown-cookie{background:radial-gradient(circle at 34% 34%, #f6d39a 0 36%, #c27b42 37% 100%);border-color:#8f582f}
+    .dot::before{content:"";position:absolute;width:16%;height:16%;background:#5a3423;border-radius:50%;box-shadow:140% 50% 0 #5a3423,-70% 170% 0 #5a3423,160% 190% 0 #5a3423,40% 280% 0 #5a3423;top:20%;left:22%}
+    .dot.red-cookie::before{background:#fff3f6;box-shadow:140% 50% 0 #fff3f6,-70% 170% 0 #fff3f6,160% 190% 0 #fff3f6,40% 280% 0 #fff3f6}
 
     @keyframes confettiFall{0%{transform:translateY(-24px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.95}}
     .confetti-piece{position:fixed;top:-30px;border-radius:3px;animation:confettiFall linear forwards}
@@ -180,6 +192,8 @@
   <audio id="audioDrop" preload="auto" src="sfx_kitchen_ding.mp3"></audio>
   <audio id="audioOrderBell" preload="auto" src="sfx_order_bell.mp3"></audio>
   <audio id="audioTada" preload="auto" src="level_tada.mp3"></audio>
+  <audio id="audioBag" preload="auto" src="bag.mp3"></audio>
+  <audio id="audioThud" preload="auto" src="thud.mp3"></audio>
 
   <div id="confettiLayer" style="position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:150;"></div>
 
@@ -237,11 +251,25 @@
 
     const currentQuestion=()=>state.levels[state.currentLevel][state.currentQuestionIndex];
 
+    function syncNavButtons(){
+      backBtn.disabled=state.currentStep===1;
+      if(state.currentStep===1){
+        forwardBtn.disabled=false;
+        forwardBtn.textContent='Next ➡';
+      }else if(state.currentStep===2){
+        forwardBtn.disabled=!state.questionResolved;
+        forwardBtn.textContent=state.questionResolved?'Next ➡':'Solve First';
+      }else{
+        forwardBtn.disabled=!state.questionResolved;
+        forwardBtn.textContent=state.questionResolved?'Next ➡':'Solve First';
+      }
+    }
+
     function setStep(step){
       state.currentStep=step;
       [pill1,pill2,pill3].forEach((pill,idx)=>pill.classList.toggle('active',idx+1===step));
       [frame1,frame2,frame3].forEach((frame,idx)=>frame.classList.toggle('active',idx+1===step));
-      backBtn.disabled=step===1;
+      syncNavButtons();
     }
 
     function cookieEl(small=false){const d=document.createElement('div');d.className=small?'cookie small':'cookie';return d}
@@ -261,7 +289,7 @@
       return tray;
     }
 
-    function bagCard(value){const btn=document.createElement('button');btn.type='button';btn.className='bag-card';btn.textContent=value;btn.dataset.value=value;btn.addEventListener('click',()=>placeBag(value,btn));return btn}
+    function bagCard(value){const btn=document.createElement('button');btn.type='button';btn.className='bag-card';btn.dataset.value=value;btn.innerHTML=`<span class="bag-knot"></span><span class="bag-number">${value}</span><span class="bag-cookie-row"><span class="bag-cookie"></span><span class="bag-cookie"></span></span>`;btn.addEventListener('click',()=>placeBag(value,btn));return btn}
 
     function renderBagOrdering(count){
       const wrap=document.createElement('div');wrap.className='bag-sort-wrap';
@@ -284,7 +312,7 @@
       if(idx===-1)return;
       state.selectedAnswer[idx]=value;
       const slot=document.querySelectorAll('#bagDropRow .bag-slot')[idx];
-      slot.textContent=value;slot.classList.add('filled');card.remove();playTone('drop');
+      slot.textContent=value;slot.classList.add('filled');card.remove();playAudio('bag');
     }
 
     function removeBagFromSlot(index){
@@ -312,11 +340,15 @@
     function renderCompareCookies(q){
       const wrap=document.createElement('div');wrap.style.width='100%';wrap.style.maxWidth='360px';wrap.style.display='grid';wrap.style.gap='8px';
       const board=document.createElement('div');board.className='compare-board';
-      [['red',q.red,'#ff1f1f'],['brown',q.brown,'#8b5a2b']].forEach(([label,count,color],idx)=>{
+      [['red',q.red,'red-cookie'],['brown',q.brown,'brown-cookie']].forEach(([label,count,cookieClass],idx)=>{
         const row=document.createElement('div');row.className='compare-color-row'+(idx===0?' top':'');
         const lab=document.createElement('div');lab.className='compare-label';lab.textContent=label;
         const dots=document.createElement('div');dots.className='dot-grid';
-        for(let i=0;i<count;i++){const dot=document.createElement('div');dot.className='dot';dot.style.background=color;dots.appendChild(dot)}
+        for(let i=0;i<count;i++){
+          const dot=document.createElement('div');
+          dot.className='dot '+cookieClass;
+          dots.appendChild(dot);
+        }
         row.appendChild(lab);row.appendChild(dots);board.appendChild(row);
       });
       const sheet=document.createElement('div');sheet.className='compare-sheet';
@@ -441,7 +473,7 @@
       }
     }
     function questionSpeechText(){
-      return `${orderEquation.textContent}. ${countHelp.textContent}`;
+      return String(orderEquation.textContent || '').trim();
     }
 
     function renderCurrentQuestion(){
@@ -450,7 +482,7 @@
       if(state.currentQuestionIndex===0) state.levelCorrect=0;
       state.selectedAnswer=q.type==='make'?[]:(q.type==='orderbags'?Array(q.count).fill(null):((q.type==='moreless'||q.type==='tenplus')?Array(q.items.length).fill(null):(q.type==='comparecookies'?Array(4).fill(null):(q.type==='smallergreater'?Array(4).fill(null):(q.type==='smallestgreatest'?Array(2).fill(null):(q.type==='arrange3'?Array(3).fill(null):null))))));
       state.questionResolved=false;
-      nextBtn.disabled=true;checkBtn.disabled=false;clearBtn.disabled=false;hintBtn.disabled=false;
+      nextBtn.disabled=true;checkBtn.disabled=false;clearBtn.disabled=false;hintBtn.disabled=false;syncNavButtons();
       reasoningPanel.className='reasoning-panel';playStage.className='play-stage';miniSellerWrap.className='mini-seller-wrap';sellerSpeech.className='speech';
       playStage.innerHTML='';answerGrid.innerHTML='';feedback.className='feedback';feedback.textContent='Read the order, bake the cookies, and check your answer.';
       progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;scoreLine.textContent=`Total score: ${state.totalScore} / 24`;missionLine.textContent=levelMission(state.currentLevel);answerGrid.style.gridTemplateColumns='repeat(3,minmax(0,1fr))';
@@ -466,14 +498,19 @@
 
       applyCharacterArt();
       setStep(1);
-      speakInstruction(questionSpeechText());
+      if(state.speechOn){
+        const thisQuestion=q;
+        setTimeout(()=>{
+          if(currentQuestion()===thisQuestion && !state.questionResolved) speakInstruction(questionSpeechText());
+        }, 720);
+      }
     }
 
     function toggleCookie(index){
       if(state.questionResolved||currentQuestion().type!=='make')return;
       const list=state.selectedAnswer;const slots=Array.from(playStage.querySelectorAll('.slot.interactive'));const slot=slots[index];const pos=list.indexOf(index);
       if(pos>=0){list.splice(pos,1);slot.classList.remove('filled');slot.innerHTML=''}
-      else{list.push(index);slot.classList.add('filled');slot.innerHTML='';slot.appendChild(cookieEl(true));playTone('drop')}
+      else{list.push(index);slot.classList.add('filled');slot.innerHTML='';slot.appendChild(cookieEl(true));playAudio('thud')}
     }
 
     function showHint(){
@@ -487,7 +524,6 @@
       if(q.type==='smallestgreatest')text='Check all 3 numbers before choosing.';
       if(q.type==='arrange3')text=q.order==='smallest'?'Put the smallest number first.':'Put the greatest number first.';
       feedback.className='feedback';feedback.textContent=`Hint: ${text}`;
-      speakInstruction(`Hint. ${text}`);
     }
 
     function clearSelection(){
@@ -515,9 +551,9 @@
       else if(q.type==='comparecookies'||q.type==='smallergreater'||q.type==='smallestgreatest'||q.type==='arrange3'){const target=correctFor(q);correct=state.selectedAnswer.every((v,idx)=>v===target[idx])}
       else return;
 
-      state.questionResolved=true;state.answered+=1;progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;checkBtn.disabled=true;clearBtn.disabled=true;hintBtn.disabled=true;nextBtn.disabled=false;setStep(3);
-      if(correct){state.totalScore+=1;state.levelCorrect+=1;feedback.className='feedback good';feedback.textContent=successText(q);sellerSpeech.className='speech good';sellerSpeech.textContent=successText(q);reasoningPanel.className='reasoning-panel show';reasoningTitle.textContent='Great job!';reasoningLine.textContent=successReason(q);playStage.classList.add('good');miniSellerWrap.classList.add('good');playTone('good');speakInstruction(`${successText(q)}. ${successReason(q)}`)}
-      else{feedback.className='feedback bad';feedback.textContent=failText(q);sellerSpeech.className='speech bad';sellerSpeech.textContent=failText(q);reasoningPanel.className='reasoning-panel show bad';reasoningTitle.textContent='Try this!';reasoningLine.textContent=failReason(q);playStage.classList.add('bad');miniSellerWrap.classList.add('bad');playTone('bad');speakInstruction(`${failText(q)}. ${failReason(q)}`)}
+      state.questionResolved=true;state.answered+=1;progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;checkBtn.disabled=true;clearBtn.disabled=true;hintBtn.disabled=true;nextBtn.disabled=false;setStep(3);syncNavButtons();
+      if(correct){state.totalScore+=1;state.levelCorrect+=1;feedback.className='feedback good';feedback.textContent=successText(q);sellerSpeech.className='speech good';sellerSpeech.textContent=successText(q);reasoningPanel.className='reasoning-panel show';reasoningTitle.textContent='Great job!';reasoningLine.textContent=successReason(q);playStage.classList.add('good');miniSellerWrap.classList.add('good');playTone('good')}
+      else{feedback.className='feedback bad';feedback.textContent=failText(q);sellerSpeech.className='speech bad';sellerSpeech.textContent=failText(q);reasoningPanel.className='reasoning-panel show bad';reasoningTitle.textContent='Try this!';reasoningLine.textContent=failReason(q);playStage.classList.add('bad');miniSellerWrap.classList.add('bad');playTone('bad')}
       scoreLine.textContent=`Total score: ${state.totalScore} / 24`;
     }
 
@@ -528,6 +564,17 @@
     const levelMission=level=>({1:'Level 1: Put the cookie bags in number order.',2:'Level 2: Pack the cookie order exactly.',3:'Level 3: Fill in bakery blanks with 1 more and 1 less.',4:'Level 4: Add 10 more cookies for bakery orders.',5:'Level 5: Compare red and brown cookies in the shop.',6:'Level 6: Compare and arrange bakery numbers within 20.'}[level]);
 
     function moveNext(){if(!state.questionResolved)return;state.currentQuestionIndex+=1;if(state.currentQuestionIndex>=state.levels[state.currentLevel].length)endLevel();else renderCurrentQuestion()}
+
+    function startNextLevel(level){
+      closeModal(roundModal);
+      state.currentLevel=level;
+      state.currentQuestionIndex=0;
+      state.questionResolved=false;
+      state.selectedAnswer=null;
+      state.currentStep=1;
+      syncNavButtons();
+      renderCurrentQuestion();
+    }
 
     function endLevel(){
       const rewards={1:{name:'Rainbow Sprinkle Cookie',base:'#d39a55',chips:['#ff5fa2','#57c7ff','#ffe16a','#8be07a']},2:{name:'Chocolate Chip Cookie',base:'#c98a52',chips:['#5a3423','#5a3423','#5a3423','#5a3423']},3:{name:'Strawberry Swirl Cookie',base:'#e7a2b7',chips:['#ff7eb6','#ffd6e8','#ff7eb6','#ffd6e8']},4:{name:'Lemon Zest Cookie',base:'#f2d45f',chips:['#fff3a0','#fff3a0','#eabf2f','#eabf2f']},5:{name:'Double Choco Cookie',base:'#8b5a2b',chips:['#4a2a16','#c28b55','#4a2a16','#c28b55']},6:{name:'Golden Star Cookie',base:'#f0bf4c',chips:['#fff1a8','#fff1a8','#d99d13','#fff1a8']}};
@@ -548,17 +595,33 @@
       }else{rewardCookieWrap.style.display='none';rewardCookieArt.innerHTML='';rewardCookieName.textContent=''}
       roundReport.innerHTML=state.currentLevel===6?`Final Score: <strong>${state.totalScore} / 24</strong><br>${perfect?'You earned the level reward cookie!':'Try again to unlock the reward cookie.'}<br>You completed all 6 levels.`:`You completed <strong>Level ${state.currentLevel}</strong>.<br>Current Score: <strong>${state.totalScore} / 24</strong><br>${perfect?'Perfect! Reward cookie unlocked.':'Get every answer correct to unlock this level\'s surprise cookie.'}`;
       roundActions.innerHTML='';
-      if(state.currentLevel<6){const nextLevelBtn=document.createElement('button');nextLevelBtn.type='button';nextLevelBtn.className='game-btn btn-next';nextLevelBtn.textContent='Next Level';nextLevelBtn.addEventListener('click',()=>{closeModal(roundModal);state.currentLevel+=1;state.currentQuestionIndex=0;renderCurrentQuestion()});roundActions.appendChild(nextLevelBtn)}
-      else{const replayBtn=document.createElement('button');replayBtn.type='button';replayBtn.className='game-btn btn-clear';replayBtn.textContent='Play Again';replayBtn.addEventListener('click',()=>location.reload());roundActions.appendChild(replayBtn);const sendBtn=document.createElement('button');sendBtn.type='button';sendBtn.className='game-btn btn-next';sendBtn.textContent='Finish and Send Score to SLS';sendBtn.addEventListener('click',sendScoreToSLS);roundActions.appendChild(sendBtn)}
+      if(state.currentLevel<6){
+        feedback.className='feedback good';
+        feedback.textContent=`Level ${state.currentLevel} complete. Press Next Level to continue.`;
+        const nextLevelBtn=document.createElement('button');
+        nextLevelBtn.type='button';
+        nextLevelBtn.className='game-btn btn-next';
+        nextLevelBtn.textContent=`Next Level →`;
+        nextLevelBtn.addEventListener('click',()=>startNextLevel(state.currentLevel+1));
+        roundActions.appendChild(nextLevelBtn);
+
+        const continueHint=document.createElement('div');
+        continueHint.style.fontWeight='900';
+        continueHint.style.fontSize='12px';
+        continueHint.style.color='#8a4c2b';
+        continueHint.style.width='100%';
+        continueHint.textContent='If you cannot see the button, scroll a little inside this panel.';
+        roundActions.prepend(continueHint);
+      }
+      else{const replayBtn=document.createElement('button');replayBtn.type='button';replayBtn.className='game-btn btn-clear';replayBtn.textContent='Play Again';replayBtn.addEventListener('click',()=>location.reload());roundActions.appendChild(replayBtn)}
       openModal(roundModal);
-      speakInstruction(perfect?`Level ${state.currentLevel} complete. Surprise reward unlocked. ${rewardCookieName.textContent}.`:`Level ${state.currentLevel} complete. Try again next time to unlock the reward cookie.`);
     }
 
     function sendScoreToSLS(){const payload={game:'Cookie Tray Shop — Numbers to 20!',score:state.totalScore,total:24,timestamp:new Date().toISOString()};console.log('SLS SCORE PAYLOAD',payload);feedback.className='feedback good';feedback.textContent=`Score ready to send: ${state.totalScore}/24. (Demo button logs the payload to the browser console.)`;closeModal(roundModal)}
 
-    const openModal=modal=>{modal.classList.add('show')},closeModal=modal=>{modal.classList.remove('show')};
+    const openModal=modal=>{modal.classList.add('show');const card=modal.querySelector('.modal-card');if(card)card.scrollTop=0},closeModal=modal=>{modal.classList.remove('show')};
 
-    function playAudio(kind){if(!state.soundOn)return;const map={correct:audioCorrect,wrong:audioWrong,drop:audioDrop,orderBell:audioOrderBell,tada:audioTada};const el=map[kind];if(!el)return;try{el.pause();el.currentTime=0;el.play().catch(()=>{})}catch(e){}}
+    function playAudio(kind){if(!state.soundOn)return;const map={correct:audioCorrect,wrong:audioWrong,drop:audioDrop,orderBell:audioOrderBell,tada:audioTada,bag:audioBag,thud:audioThud};const el=map[kind];if(!el)return;try{el.pause();el.currentTime=0;el.play().catch(()=>{})}catch(e){}}
     function launchConfetti(count=28){confettiLayer.innerHTML='';const colors=['#ff6fae','#ffd766','#6ed3ff','#8fe388','#c7a3ff','#ffad66'];for(let i=0;i<count;i++){const piece=document.createElement('div');piece.className='confetti-piece';piece.style.left=(Math.random()*100)+'vw';piece.style.width=(7+Math.random()*5)+'px';piece.style.height=(10+Math.random()*8)+'px';piece.style.background=colors[i%colors.length];piece.style.animationDuration=(1.9+Math.random()*1.8)+'s';piece.style.animationDelay=(Math.random()*0.2)+'s';confettiLayer.appendChild(piece)}setTimeout(()=>{confettiLayer.innerHTML='';},3200)}
     function playTone(kind){if(kind==='drop')playAudio('drop');if(kind==='good'){playAudio('correct');launchConfetti(24)}if(kind==='bad')playAudio('wrong')}
 
@@ -574,32 +637,39 @@
     }
 
     function speakInstruction(text){
-      if(!state.speechOn || !('speechSynthesis' in window) || !text) return;
-      try{window.speechSynthesis.cancel()}catch(e){}
-      const utter=new SpeechSynthesisUtterance(text);
+      const normalized=String(text||'').replace(/\s+/g,' ').trim();
+      if(!state.speechOn || !('speechSynthesis' in window) || !normalized) return;
+      const synth=window.speechSynthesis;
+      if(synth.speaking || synth.pending) return;
+      if(normalized===window.__cookieLastSpeechText && Date.now()-(window.__cookieLastSpeechAt||0)<1800) return;
+
+      const utter=new SpeechSynthesisUtterance(normalized);
       const voice=pickUkFemaleVoice();
       if(voice) utter.voice=voice;
       utter.lang=voice?.lang || 'en-GB';
-      utter.rate=0.92;
-      utter.pitch=1.08;
+      utter.rate=0.9;
+      utter.pitch=1;
       utter.volume=1;
-      try{window.speechSynthesis.speak(utter)}catch(e){}
+      utter.onstart=()=>{window.__cookieLastSpeechText=normalized;window.__cookieLastSpeechAt=Date.now();};
+      utter.onend=()=>{window.__cookieLastSpeechAt=Date.now();};
+      utter.onerror=()=>{window.__cookieLastSpeechAt=Date.now();};
+      try{synth.speak(utter)}catch(e){}
     }
 
     if('speechSynthesis' in window){window.speechSynthesis.onvoiceschanged=()=>{}};
 
-    coverStartBtn.addEventListener('click',()=>{coverScreen.classList.add('hidden');app.classList.add('show');state.levels=buildLevels();renderCurrentQuestion();setTimeout(()=>speakInstruction(questionSpeechText()),250)});
+    coverStartBtn.addEventListener('click',()=>{coverScreen.classList.add('hidden');app.classList.add('show');state.levels=buildLevels();renderCurrentQuestion()});
     soundToggleBtn.addEventListener('click',()=>{state.soundOn=!state.soundOn;soundToggleBtn.textContent=state.soundOn?'🔊':'🔇'});
     voiceToggleBtn.addEventListener('click',()=>{state.speechOn=!state.speechOn;voiceToggleBtn.textContent=state.speechOn?'🗣️':'🔕';if(state.speechOn)speakInstruction(questionSpeechText());else if('speechSynthesis' in window)window.speechSynthesis.cancel()});
     infoBtn.addEventListener('click',()=>openModal(infoModal));
     closeInfoBtn.addEventListener('click',()=>closeModal(infoModal));
     backBtn.addEventListener('click',()=>{if(state.currentStep>1)setStep(state.currentStep-1)});
-    forwardBtn.addEventListener('click',()=>{if(state.currentStep<3)setStep(state.currentStep+1);else if(state.questionResolved)moveNext()});
+    forwardBtn.addEventListener('click',()=>{if(forwardBtn.disabled)return;if(state.currentStep<3)setStep(state.currentStep+1);else if(state.questionResolved)moveNext()});
     checkBtn.addEventListener('click',resolveQuestion);
     hintBtn.addEventListener('click',showHint);
     clearBtn.addEventListener('click',clearSelection);
     nextBtn.addEventListener('click',moveNext);
-    document.addEventListener('click',e=>{if(e.target===infoModal)closeModal(infoModal);if(e.target===roundModal)closeModal(roundModal)});
+    document.addEventListener('click',e=>{if(e.target===infoModal)closeModal(infoModal)});
   </script>
 </body>
 </html>
