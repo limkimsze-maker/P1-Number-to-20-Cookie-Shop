@@ -28,8 +28,9 @@
     .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0)}
     .app.show{display:flex}
     .topbar,.progress-wrap,.frame,.feedback,.modal-card{background:var(--panel);border:3px solid var(--brown);border-radius:16px;box-shadow:var(--shadow)}
-    .topbar{padding:3px 4px;flex:0 0 auto}
+    .topbar{padding:3px 4px;flex:0 0 auto;position:relative}
     .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
+    .score-box{position:absolute;top:3px;left:50%;transform:translateX(-50%);min-width:74px;padding:2px 8px;border:2px solid var(--brown);border-radius:999px;background:linear-gradient(180deg,#fff8b5,#ffd7e7);color:#b32045;font-size:11px;font-weight:900;line-height:1;text-align:center;pointer-events:none;box-shadow:0 2px 6px rgba(122,53,93,.12)}
     .title{font-size:clamp(.84rem,3.3vw,.98rem);font-weight:900;color:#ad4476;line-height:1}
     .top-actions{display:flex;gap:3px}
     .pill-btn{width:30px;height:28px;border:2px solid var(--brown);border-radius:999px;background:#fff3df;color:#6a3151;font-size:14px;font-weight:900;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -154,6 +155,7 @@
       .app{padding:max(4px,env(safe-area-inset-top)) 6px max(4px,env(safe-area-inset-bottom));gap:4px}
       .topbar,.progress-wrap,.frame,.feedback,.modal-card{border-width:2px;border-radius:14px}
       .pill-btn{width:28px;height:26px;font-size:13px}
+      .score-box{top:2px;min-width:68px;padding:2px 6px;font-size:10px}
       .story-pill{font-size:11px;padding:3px 1px}
       .character-frame{max-width:180px;height:104px}.seller-frame{max-width:190px;height:110px}
       .avatar-emoji{width:84px;height:62px;font-size:40px}.avatar-badge{font-size:9px;padding:2px 7px}
@@ -174,7 +176,7 @@
   <div class="cover" id="coverScreen"><div class="cover-card"><div class="cover-hero" aria-hidden="true"><div class="hero-big">🍪 🍪 🍪</div><div style="font-weight:900;color:#8a4c2b;">Count, compare, pack, and celebrate in the cookie shop!</div></div><h1 class="cover-title">Cookie Tray Shop — Numbers to 20!</h1><div class="cover-sub">Tap-friendly cookie shop number game for young learners</div><div class="cover-note"><strong>Learning goals</strong><br>Level 1 = arrange cookie bags in number order<br>Level 2 = pack the customer's cookie order exactly<br>Level 3 = fill in bakery blanks with 1 more and 1 less<br>Level 4 = add 10 more cookies for bakery orders<br>Level 5 = compare red cookies and brown cookies in the shop<br>Level 6 = compare and arrange bakery numbers within 20</div><div class="cover-actions"><button class="start-btn" id="coverStartBtn" type="button">▶ START BAKING</button></div></div></div>
 
   <div class="app" id="app">
-    <header class="topbar"><div class="top-row"><div><div class="title">Cookie Tray Shop — Numbers to 20!</div></div><div class="top-actions"><button class="pill-btn" id="soundToggleBtn" type="button">🔊</button><button class="pill-btn" id="voiceToggleBtn" type="button">🗣️</button><button class="pill-btn" id="infoBtn" type="button">📘</button></div></div></header>
+    <header class="topbar"><div class="top-row"><div><div class="title">Cookie Tray Shop — Numbers to 20!</div></div><div class="top-actions"><button class="pill-btn" id="soundToggleBtn" type="button">🔊</button><button class="pill-btn" id="voiceToggleBtn" type="button">🗣️</button><button class="pill-btn" id="infoBtn" type="button">📘</button></div></div><div class="score-box" id="topScoreBox">⭐ 0/20</div></header>
     <div class="progress-wrap"><div class="section-label">Level Progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
     <div class="story-nav"><div class="story-pill active" id="pill1">1. Order</div><div class="story-pill" id="pill2">2. Bake</div><div class="story-pill" id="pill3">3. Baker</div></div>
 
@@ -210,14 +212,20 @@
     window.addEventListener('orientationchange',setAppHeight);
 
     const $=id=>document.getElementById(id);
-    const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),customerBadge=$('customerBadge'),bakerArt=$('bakerArt'),bakerBadge=$('bakerBadge'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
+    const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),topScoreBox=$('topScoreBox'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),customerBadge=$('customerBadge'),bakerArt=$('bakerArt'),bakerBadge=$('bakerBadge'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
 
-    const state={soundOn:true,speechOn:true,currentStep:1,currentLevel:1,currentQuestionIndex:0,totalScore:0,totalQuestions:20,answered:0,selectedAnswer:null,questionResolved:false,levels:null,levelCorrect:0,levelRewardsUnlocked:{}};
+    const state={soundOn:true,speechOn:true,currentStep:1,currentLevel:1,currentQuestionIndex:0,totalScore:0,totalQuestions:20,answered:0,selectedAnswer:null,questionResolved:false,firstTryScorable:true,levels:null,levelCorrect:0,levelRewardsUnlocked:{}};
 
     const shuffle=arr=>{const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
     const randomBetween=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
     const makeSequence=count=>Array.from({length:count},(_,i)=>i+1);
     const shuffledSequence=count=>{const ordered=makeSequence(count);let s=shuffle(ordered);if(s.every((v,i)=>v===ordered[i]))s=shuffle(ordered);return s};
+
+    function updateScoreDisplays(){
+      const scoreText=`${state.totalScore} / ${state.totalQuestions}`;
+      if(scoreLine)scoreLine.textContent=`Total score: ${scoreText}`;
+      if(topScoreBox)topScoreBox.textContent=`⭐ ${state.totalScore}/${state.totalQuestions}`;
+    }
 
     function buildLevels(){
       return {
@@ -480,10 +488,11 @@
       if(state.currentQuestionIndex===0) state.levelCorrect=0;
       state.selectedAnswer=q.type==='make'?[]:(q.type==='orderbags'?Array(q.count).fill(null):((q.type==='moreless'||q.type==='tenplus')?Array(q.items.length).fill(null):(q.type==='comparecookies'?Array(4).fill(null):(q.type==='smallergreater'?Array(4).fill(null):(q.type==='smallestgreatest'?Array(2).fill(null):(q.type==='arrange3'?Array(3).fill(null):null))))));
       state.questionResolved=false;
+      state.firstTryScorable=true;
       nextBtn.disabled=true;checkBtn.disabled=false;clearBtn.disabled=false;hintBtn.disabled=false;syncNavButtons();
       reasoningPanel.className='reasoning-panel';playStage.className='play-stage';miniSellerWrap.className='mini-seller-wrap';sellerSpeech.className='speech';
       playStage.innerHTML='';answerGrid.innerHTML='';feedback.className='feedback';feedback.textContent='Read the order, bake the cookies, and check your answer.';
-      progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;scoreLine.textContent=`Total score: ${state.totalScore} / 20`;missionLine.textContent=levelMission(state.currentLevel);answerGrid.style.gridTemplateColumns='repeat(3,minmax(0,1fr))';
+      progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;updateScoreDisplays();missionLine.textContent=levelMission(state.currentLevel);answerGrid.style.gridTemplateColumns='repeat(3,minmax(0,1fr))';
 
       if(q.type==='orderbags'){customerLine.textContent=q.count===10?'Customer says: “Line up the cookie bags from 1 to 10.”':'Customer says: “Line up the cookie bags from 1 to 20.”';orderEquation.textContent=q.count===10?'Arrange cookie bags 1 to 10 in order.':'Arrange cookie bags 1 to 20 in order.';orderHelp.textContent='Tap a bag below to place it into the next space above.';countEquation.textContent=q.count===10?'Arrange 1 to 10 cookie bags.':'Arrange 1 to 20 cookie bags.';countHelp.textContent='Tap a bag to place it. Tap a top space to return a bag.';sellerSpeech.textContent='Start with the smallest cookie bag number and count on in order.';playStage.appendChild(renderBagOrdering(q.count));addOptionButton('Place every cookie bag in order, then press Check.','note',true).disabled=true;answerGrid.style.gridTemplateColumns='1fr'}
       if(q.type==='make'){customerLine.textContent=`Customer says: “Please pack ${q.value} cookies.”`;orderEquation.textContent=`Pack ${q.value} cookies.`;orderHelp.textContent='Tap spaces on the tray to pack or remove cookies.';countEquation.textContent=`Pack ${q.value} cookies.`;countHelp.textContent='Tap the tray to add or remove cookies.';sellerSpeech.textContent='Pack the customer order exactly. No more, no less.';playStage.appendChild(trayElement(0,20,true));addOptionButton('Build the tray, then press Check.','note',true).disabled=true;answerGrid.style.gridTemplateColumns='1fr'}
@@ -559,7 +568,7 @@
         nextBtn.disabled=false;
         setStep(3);
         syncNavButtons();
-        state.totalScore+=1;
+        if(state.firstTryScorable) state.totalScore+=1;
         state.levelCorrect+=1;
         feedback.className='feedback good';
         feedback.textContent=successText(q);
@@ -572,6 +581,7 @@
         miniSellerWrap.classList.add('good');
         playTone('good');
       }else{
+        state.firstTryScorable=false;
         state.questionResolved=false;
         checkBtn.disabled=false;
         clearBtn.disabled=false;
@@ -590,7 +600,7 @@
         miniSellerWrap.classList.add('bad');
         playTone('bad');
       }
-      scoreLine.textContent=`Total score: ${state.totalScore} / 20`;
+      updateScoreDisplays();
     }
 
     const successText=q=>q.type==='orderbags'?'Wonderful cookie bag ordering!':q.type==='moreless'?'Great bakery counting!':q.type==='tenplus'?'Super bakery adding!':q.type==='comparecookies'?'Excellent cookie comparing!':q.type==='smallergreater'?'Great comparing!':q.type==='smallestgreatest'?'Well done finding the smallest and greatest!':q.type==='arrange3'?'Wonderful ordering!':q.type==='make'?'Perfect cookie packing!':'Well done!';
@@ -694,7 +704,8 @@
 
     if('speechSynthesis' in window){window.speechSynthesis.onvoiceschanged=()=>{}};
 
-    coverStartBtn.addEventListener('click',()=>{coverScreen.classList.add('hidden');app.classList.add('show');state.levels=buildLevels();renderCurrentQuestion()});
+    coverStartBtn.addEventListener('click',()=>{coverScreen.classList.add('hidden');app.classList.add('show');state.levels=buildLevels();
+      updateScoreDisplays();renderCurrentQuestion()});
     soundToggleBtn.addEventListener('click',()=>{state.soundOn=!state.soundOn;soundToggleBtn.textContent=state.soundOn?'🔊':'🔇'});
     voiceToggleBtn.addEventListener('click',()=>{state.speechOn=!state.speechOn;voiceToggleBtn.textContent=state.speechOn?'🗣️':'🔕';if(state.speechOn)speakInstruction(questionSpeechText());else if('speechSynthesis' in window)window.speechSynthesis.cancel()});
     infoBtn.addEventListener('click',()=>openModal(infoModal));
