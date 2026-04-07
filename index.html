@@ -30,15 +30,29 @@
     @media (min-width:768px){
       body.desktop-fit .app.show{position:fixed;left:50%;top:50%;width:min(980px,calc(100vw - 24px));max-width:980px;height:calc(100vh - 24px);max-height:calc(100vh - 24px);min-height:0;margin:0;transform:translate(-50%,-50%);transform-origin:center center;will-change:auto;padding:8px 10px;gap:6px}
       body.desktop-fit .cover-card{width:min(900px,100%)}
+      body.desktop-fit .frame.active{gap:3px}
+      body.desktop-fit .main-card{padding:4px 6px}
+      body.desktop-fit .dialogue,body.desktop-fit .help-line{font-size:9px;line-height:1.1}
+      body.desktop-fit .equation-big{margin:4px 0 2px}
+      body.desktop-fit .equation-mini{margin:0}
       body.desktop-fit .character-frame{max-width:240px;height:104px}
       body.desktop-fit .seller-frame{max-width:250px;height:110px}
-      body.desktop-fit .play-stage{overflow:hidden}
-      body.desktop-fit .worksheet,body.desktop-fit .compare-sheet{max-width:640px}
-      body.desktop-fit .compare-board{max-width:620px}
+      body.desktop-fit .play-stage{overflow:hidden;min-height:300px;padding:8px}
+      body.desktop-fit .reasoning-panel{padding:4px 6px}
+      body.desktop-fit .answer-panel{padding:2px;gap:2px}
+      body.desktop-fit .answer-area{gap:2px}
+      body.desktop-fit .controls{gap:2px}
+      body.desktop-fit .game-btn{padding:4px 2px}
+      body.desktop-fit .worksheet,body.desktop-fit .compare-sheet{max-width:700px}
+      body.desktop-fit .compare-board{max-width:680px}
       body.desktop-fit .cookie-tray{width:min(100%,420px)}
       body.desktop-fit .bag-sort-wrap{max-width:760px;margin:0 auto}
       body.desktop-fit .answer-grid{grid-auto-rows:minmax(40px,auto)}
       body.desktop-fit .story-actions .game-btn{font-size:12px}
+      body.desktop-fit .play-stage.no-picture .worksheet{max-width:860px;padding:16px 20px;gap:14px}
+      body.desktop-fit .play-stage.no-picture .work-row{gap:16px}
+      body.desktop-fit .play-stage.no-picture .work-label{font-size:22px;line-height:1.28}
+      body.desktop-fit .play-stage.no-picture .blank-chip{min-width:112px;padding:10px 16px;font-size:34px;border-radius:16px}
     }
     .topbar,.progress-wrap,.frame,.feedback,.modal-card{background:var(--panel);border:3px solid var(--brown);border-radius:16px;box-shadow:var(--shadow)}
     .topbar{padding:3px 4px;flex:0 0 auto;position:relative}
@@ -81,6 +95,10 @@
     .play-stage{flex:1 1 auto;min-height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(255,250,245,.46),rgba(255,247,253,.5)),url('cookie_shop.png') center center/cover no-repeat;border:2px solid #e3b6c7;padding:4px;overflow:auto;position:relative}
     .play-stage.good{box-shadow:0 0 0 4px rgba(255,255,255,.45),0 0 20px rgba(255,188,214,.72)}
     .play-stage.bad{background:#fff6f4}
+    .play-stage.no-picture .worksheet{max-width:520px;padding:12px 14px;gap:10px}
+    .play-stage.no-picture .work-row{gap:12px}
+    .play-stage.no-picture .work-label{font-size:16px;line-height:1.24}
+    .play-stage.no-picture .blank-chip{min-width:72px;padding:8px 10px;font-size:22px;border-radius:14px}
 
     .reasoning-panel{display:none;padding:5px 6px;text-align:center;font-weight:900;background:#eef9f0;border:2px dashed var(--good)}
     .reasoning-panel.show{display:block}
@@ -527,6 +545,7 @@
       state.firstTryScorable=true;
       nextBtn.disabled=true;checkBtn.disabled=false;clearBtn.disabled=false;hintBtn.disabled=false;syncNavButtons();
       reasoningPanel.className='reasoning-panel';playStage.className='play-stage';miniSellerWrap.className='mini-seller-wrap';sellerSpeech.className='speech';
+      if(['moreless','tenplus','smallergreater','smallestgreatest','arrange3'].includes(q.type)) playStage.classList.add('no-picture');
       playStage.innerHTML='';answerGrid.innerHTML='';feedback.className='feedback';feedback.textContent='Read the order, bake the cookies, and check your answer.';
       progressFill.style.width=`${(state.answered/state.totalQuestions)*100}%`;updateScoreDisplays();missionLine.textContent=levelMission(state.currentLevel);answerGrid.style.gridTemplateColumns='repeat(3,minmax(0,1fr))';
 
