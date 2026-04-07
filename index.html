@@ -427,13 +427,12 @@
       });
       const sheet=document.createElement('div');sheet.className='compare-sheet';
       [['(a) Which has more?','How many more?'],['(b) Which has fewer?','How many fewer?']].forEach((pair,rowIndex)=>{
-        const row=document.createElement('div');row.style.display='grid';row.style.gridTemplateColumns='auto auto auto';row.style.gap='10px';row.style.alignItems='center';row.style.justifyContent='center';
+        const row=document.createElement('div');row.style.display='grid';row.style.gridTemplateColumns='auto auto auto auto';row.style.columnGap='12px';row.style.rowGap='8px';row.style.alignItems='center';row.style.justifyContent='center';
         const left=document.createElement('div');left.className='work-label';left.textContent=pair[0];
         const mid=document.createElement('div');mid.className='blank-chip';mid.textContent=state.selectedAnswer[rowIndex*2]??'____';
-        const rightWrap=document.createElement('div');rightWrap.style.display='grid';rightWrap.style.gridTemplateColumns='auto auto';rightWrap.style.gap='10px';rightWrap.style.alignItems='center';
         const rightLabel=document.createElement('div');rightLabel.className='work-label';rightLabel.textContent=pair[1];
         const rightBlank=document.createElement('div');rightBlank.className='blank-chip';rightBlank.textContent=state.selectedAnswer[rowIndex*2+1]??'__';
-        rightWrap.appendChild(rightLabel);rightWrap.appendChild(rightBlank);row.appendChild(left);row.appendChild(mid);row.appendChild(rightWrap);sheet.appendChild(row);
+        row.appendChild(left);row.appendChild(mid);row.appendChild(rightLabel);row.appendChild(rightBlank);sheet.appendChild(row);
       });
       wrap.appendChild(board);wrap.appendChild(sheet);return wrap;
     }
