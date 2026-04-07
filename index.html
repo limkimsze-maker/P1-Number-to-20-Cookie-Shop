@@ -235,6 +235,17 @@
     window.addEventListener('resize',()=>{setAppHeight();requestFitDesktopApp();}); 
     window.addEventListener('orientationchange',()=>{setAppHeight();requestFitDesktopApp();});
 
+    function preventPageZoom(e){
+      const key=(e.key||'').toLowerCase();
+      if((e.ctrlKey||e.metaKey) && ['+','=','-','_','0'].includes(key)){
+        e.preventDefault();
+      }
+    }
+    window.addEventListener('keydown',preventPageZoom,{passive:false});
+    window.addEventListener('wheel',e=>{
+      if(e.ctrlKey||e.metaKey) e.preventDefault();
+    },{passive:false});
+
     const $=id=>document.getElementById(id);
     const coverScreen=$('coverScreen'),app=$('app'),coverStartBtn=$('coverStartBtn'),soundToggleBtn=$('soundToggleBtn'),voiceToggleBtn=$('voiceToggleBtn'),infoBtn=$('infoBtn'),closeInfoBtn=$('closeInfoBtn'),infoModal=$('infoModal'),roundModal=$('roundModal'),roundTitle=$('roundTitle'),roundBadge=$('roundBadge'),roundReport=$('roundReport'),roundLine=$('roundLine'),roundActions=$('roundActions'),rewardCookieWrap=$('rewardCookieWrap'),rewardCookieArt=$('rewardCookieArt'),rewardCookieName=$('rewardCookieName'),progressFill=$('progressFill'),topScoreBox=$('topScoreBox'),pill1=$('pill1'),pill2=$('pill2'),pill3=$('pill3'),frame1=$('frame1'),frame2=$('frame2'),frame3=$('frame3'),customerLine=$('customerLine'),orderEquation=$('orderEquation'),orderHelp=$('orderHelp'),countEquation=$('countEquation'),countHelp=$('countHelp'),playStage=$('playStage'),answerGrid=$('answerGrid'),reasoningPanel=$('reasoningPanel'),reasoningTitle=$('reasoningTitle'),reasoningLine=$('reasoningLine'),sellerSpeech=$('sellerSpeech'),missionLine=$('missionLine'),scoreLine=$('scoreLine'),feedback=$('feedback'),backBtn=$('backBtn'),forwardBtn=$('forwardBtn'),checkBtn=$('checkBtn'),hintBtn=$('hintBtn'),clearBtn=$('clearBtn'),nextBtn=$('nextBtn'),miniSellerWrap=$('miniSellerWrap'),customerArt=$('customerArt'),customerBadge=$('customerBadge'),bakerArt=$('bakerArt'),bakerBadge=$('bakerBadge'),miniSellerImg=$('miniSellerImg'),confettiLayer=$('confettiLayer'),audioCorrect=$('audioCorrect'),audioWrong=$('audioWrong'),audioDrop=$('audioDrop'),audioOrderBell=$('audioOrderBell'),audioTada=$('audioTada');
 
