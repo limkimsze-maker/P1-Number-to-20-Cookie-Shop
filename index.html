@@ -215,6 +215,67 @@
       .work-label{font-size:12px}.blank-chip{min-width:48px;padding:5px 6px;font-size:12px}.compare-label{font-size:10px}
       .cover-card{padding:10px}.cover-hero{min-height:150px}.hero-big{font-size:48px}.cover-note{font-size:11px;padding:8px 10px}.start-btn{min-width:180px;padding:10px 14px;font-size:22px}
     }
+    /* Bigger buttons / labels / cookies without changing overall layout much */
+button,
+.btn,
+.choice-btn,
+.control-btn,
+.option-btn {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  min-height: 48px;
+  padding: 10px 16px;
+  border-width: 2px;
+  transform: scale(1.06);
+  transform-origin: center center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Make button text clearer */
+button span,
+.btn span,
+.choice-btn span,
+.control-btn span,
+.option-btn span {
+  font-size: 1.02em;
+  font-weight: 700;
+}
+
+/* Cookie visuals: slightly larger and more obvious */
+.cookie,
+.cookie-btn,
+.cookie-card,
+.cookie-wrap,
+.cookie-item {
+  transform: scale(1.10);
+  transform-origin: center center;
+}
+
+/* If cookies are images or SVGs */
+.cookie img,
+.cookie-btn img,
+.cookie-card img,
+.cookie-wrap img,
+.cookie-item img,
+.cookie svg,
+.cookie-btn svg,
+.cookie-card svg,
+.cookie-wrap svg,
+.cookie-item svg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18));
+}
+
+/* Optional: make labels under/inside cookies clearer */
+.cookie-label,
+.cookie-text,
+.label-on-button {
+  font-size: 1rem;
+  font-weight: 700;
+}
   </style>
 </head>
 <body>
