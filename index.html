@@ -215,61 +215,33 @@
       .work-label{font-size:12px}.blank-chip{min-width:48px;padding:5px 6px;font-size:12px}.compare-label{font-size:10px}
       .cover-card{padding:10px}.cover-hero{min-height:150px}.hero-big{font-size:48px}.cover-note{font-size:11px;padding:8px 10px}.start-btn{min-width:180px;padding:10px 14px;font-size:22px}
     }
-    /* Bigger buttons / labels / cookies without changing overall layout much */
-button,
-.btn,
-.choice-btn,
-.control-btn,
-.option-btn {
-  font-size: 2em !important;
-  line-height: 1 !important;
-}
+    /* Bigger, clearer controls and instructions without changing the layout structure */
+    .game-btn{font-size:22px !important;line-height:1 !important;padding:3px 1px !important;min-height:46px}
+    .option-btn{min-height:48px}
+    .option-btn .label{font-size:36px !important;line-height:1 !important}
 
-/* Make button text clearer */
-button span,
-.btn span,
-.choice-btn span,
-.control-btn span,
-.option-btn span {
-  font-size: 1.02em;
-  font-weight: 700;
-}
+    .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:20px !important;line-height:1.15 !important}
+    .equation-big{font-size:clamp(2rem,6.2vw,3rem) !important}
+    .equation-mini{font-size:clamp(2rem,4.6vw,2.24rem) !important}
+    .reasoning-line{font-size:2rem !important;line-height:1.12 !important}
 
-/* Cookie visuals: slightly larger and more obvious */
-.cookie,
-.cookie-btn,
-.cookie-card,
-.cookie-wrap,
-.cookie-item {
-  transform: scale(1.10);
-  transform-origin: center center;
-}
+    .bag-card{min-height:96px;transform:scale(1.06);transform-origin:center center}
+    .bag-number{font-size:40px !important;margin-top:10px}
+    .bag-slot{min-height:32px;font-size:18px}
+    .slot-bag-number{font-size:38px !important;margin-top:10px}
+    .cookie{max-width:50px;max-height:50px}
+    .cookie.small{max-width:34px;max-height:34px}
 
-/* If cookies are images or SVGs */
-.cookie img,
-.cookie-btn img,
-.cookie-card img,
-.cookie-wrap img,
-.cookie-item img,
-.cookie svg,
-.cookie-btn svg,
-.cookie-card svg,
-.cookie-wrap svg,
-.cookie-item svg {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18));
-}
-
-/* Optional: make labels under/inside cookies clearer */
-.cookie-label,
-.cookie-text,
-.label-on-button {
-  font-size: 1rem;
-  font-weight: 700;
-}
-  </style>
+    @media (max-width:430px){
+      .game-btn{font-size:18px !important}
+      .option-btn .label{font-size:28px !important}
+      .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:16px !important}
+      .equation-big{font-size:clamp(1.6rem,7vw,2rem) !important}
+      .equation-mini{font-size:clamp(1.4rem,6vw,1.8rem) !important}
+      .reasoning-line{font-size:1.4rem !important}
+      .bag-number,.slot-bag-number{font-size:30px !important}
+    }
+</style>
 </head>
 <body>
   <div class="cover" id="coverScreen"><div class="cover-card"><div class="cover-hero" aria-hidden="true"><div class="hero-big">🍪 🍪 🍪</div><div style="font-weight:900;color:#8a4c2b;">Count, compare, pack, and celebrate in the cookie shop!</div></div><h1 class="cover-title">Cookie Tray Shop — Numbers to 20!</h1><div class="cover-sub">Tap-friendly cookie shop number game for young learners</div><div class="cover-note"><strong>Learning goals</strong><br>Level 1 = arrange cookie bags in number order<br>Level 2 = pack the customer's cookie order exactly<br>Level 3 = fill in bakery blanks with 1 more and 1 less<br>Level 4 = add 10 more cookies for bakery orders<br>Level 5 = compare red cookies and brown cookies in the shop<br>Level 6 = compare and arrange bakery numbers within 20</div><div class="cover-actions"><button class="start-btn" id="coverStartBtn" type="button">▶ START BAKING</button></div></div></div>
