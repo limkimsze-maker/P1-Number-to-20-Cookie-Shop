@@ -35,7 +35,7 @@
       body.desktop-fit .dialogue,body.desktop-fit .help-line{font-size:9px;line-height:1.1}
       body.desktop-fit .equation-big{margin:4px 0 2px}
       body.desktop-fit .equation-mini{margin:0}
-      body.desktop-fit .character-frame{max-width:240px;height:104px}
+      body.desktop-fit .character-frame{max-width:320px;height:186px}
       body.desktop-fit .seller-frame{max-width:250px;height:110px}
       body.desktop-fit .play-stage{overflow:hidden;min-height:380px;padding:12px 14px}
       body.desktop-fit .reasoning-panel{padding:4px 6px}
@@ -86,20 +86,20 @@
     .frame.active{display:flex;flex-direction:column;gap:4px}
     .frame-title{text-align:center;font-size:11px;font-weight:900;color:#a04271}
     .character-frame,.seller-frame,.main-card,.note,.speech,.play-stage,.answer-panel,.reasoning-panel{width:100%;background:rgba(255,247,251,.88);border:2px solid var(--brown);border-radius:14px;backdrop-filter:blur(1px)}
-    .character-frame,.seller-frame{max-width:210px;height:112px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf0,#ffe0f1);overflow:hidden}
-    .seller-frame{max-width:220px;height:118px}
-    .avatar-stack{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;width:100%;height:100%;padding:8px 8px 6px}
-    .character-art{max-width:100%;max-height:78px;object-fit:contain;display:block;visibility:hidden}
+    .character-frame,.seller-frame{max-width:320px;height:186px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf0,#ffe0f1);overflow:visible}
+    .seller-frame{max-width:340px;height:196px}
+    .avatar-stack{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;width:100%;height:100%;padding:6px 8px 4px}
+    .character-art{width:auto;height:156px;max-width:none;max-height:none;object-fit:contain;display:block;visibility:hidden}
     .mini-seller-img{width:100%;height:100%;object-fit:contain;display:block;visibility:hidden}
-    .avatar-emoji{width:92px;height:68px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:44px}
-    .avatar-badge{max-width:96%;background:#fffdf2;border:2px solid var(--brown);border-radius:14px;padding:6px 10px;font-size:13px;font-weight:900;color:#6a3151;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15;text-align:center;box-shadow:0 2px 0 rgba(255,255,255,.6) inset}
+    .avatar-emoji{width:120px;height:96px;display:flex;align-items:center;justify-content:center;line-height:1;font-size:68px}
+    .avatar-badge{max-width:96%;background:#fffdf2;border:2px solid var(--brown);border-radius:14px;padding:4px 10px;font-size:13px;font-weight:900;color:#6a3151;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.05;text-align:center;box-shadow:0 2px 0 rgba(255,255,255,.6) inset}
 
     .main-card{padding:6px 6px;text-align:center;flex:0 0 auto}
     .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:10px;font-weight:800;line-height:1.18}
     .equation-big{font-size:clamp(1.2rem,6.2vw,1.55rem);font-weight:900;color:#c43e78;line-height:1.08;margin:6px 0 4px}
     .equation-mini{font-size:clamp(1rem,4.6vw,1.12rem);font-weight:900;color:#c43e78;line-height:1.05;margin:0}
     .equation-face-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
-    .mini-seller-wrap{width:32px;height:32px;border-radius:50%;border:2px solid var(--brown);background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 auto;font-size:18px;line-height:1}
+    .mini-seller-wrap{width:64px;height:64px;border-radius:50%;border:2px solid var(--brown);background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 auto;font-size:32px;line-height:1}
     .mini-seller-wrap.good{background:#e7f8ea;border-color:var(--good)}
     .mini-seller-wrap.bad{background:#ffe6e0;border-color:var(--bad)}
 
@@ -202,8 +202,10 @@
       .pill-btn{width:28px;height:26px;font-size:13px}
       .score-box{top:17px;min-width:68px;padding:2px 6px;font-size:10px}
       .story-pill{font-size:11px;padding:3px 1px}
-      .character-frame{max-width:180px;height:104px}.seller-frame{max-width:190px;height:110px}
-      .avatar-emoji{width:84px;height:62px;font-size:40px}.avatar-badge{font-size:9px;padding:2px 7px}
+      .character-frame{max-width:250px;height:150px}.seller-frame{max-width:260px;height:160px}
+      .avatar-emoji{width:104px;height:82px;font-size:56px}.avatar-badge{font-size:10px;padding:3px 8px}
+      .character-art{height:126px}
+      .mini-seller-wrap{width:52px;height:52px;font-size:26px}
       .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:9px}
       .equation-big{font-size:1.12rem}.equation-mini{font-size:1rem}.reasoning-line{font-size:1rem}
       .answer-grid{grid-auto-rows:minmax(40px,auto);gap:3px}
