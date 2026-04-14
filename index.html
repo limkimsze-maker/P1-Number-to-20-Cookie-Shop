@@ -234,6 +234,11 @@
     .cookie{max-width:50px;max-height:50px}
     .cookie.small{max-width:34px;max-height:34px}
 
+    /* Bigger worksheet numbers for the bakery blanks / +10 screen */
+    .play-stage.no-picture .worksheet .work-label{font-size:clamp(2.2rem,5vw,3.2rem) !important;line-height:1.08 !important}
+    body.desktop-fit .play-stage.no-picture .worksheet .work-label{font-size:56px !important;line-height:1.05 !important}
+    .play-stage.no-picture .worksheet .work-row{gap:20px !important}
+
     @media (max-width:430px){
       .game-btn{font-size:18px !important}
       .option-btn .label{font-size:28px !important}
@@ -241,6 +246,7 @@
       .equation-big{font-size:clamp(1.6rem,7vw,2rem) !important}
       .equation-mini{font-size:clamp(1.4rem,6vw,1.8rem) !important}
       .reasoning-line{font-size:1.4rem !important}
+      .play-stage.no-picture .worksheet .work-label{font-size:clamp(1.5rem,7vw,2.2rem) !important;line-height:1.08 !important}
       .bag-number,.slot-bag-number{font-size:30px !important}
     }
 </style>
