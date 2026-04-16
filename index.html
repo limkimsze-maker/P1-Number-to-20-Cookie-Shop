@@ -124,6 +124,8 @@
     .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
     .score-box{position:absolute;top:18px;left:50%;transform:translateX(-50%);min-width:74px;padding:2px 8px;border:2px solid var(--brown);border-radius:999px;background:linear-gradient(180deg,#fff8b5,#ffd7e7);color:#b32045;font-size:11px;font-weight:900;line-height:1;text-align:center;pointer-events:none;box-shadow:0 2px 6px rgba(122,53,93,.12)}
     .title{font-size:clamp(.84rem,3.3vw,.98rem);font-weight:900;color:#ad4476;line-height:1}
+    .zoom-note{margin-top:6px;font-size:clamp(.8rem,.45vw + .7rem,1.15rem);font-weight:800;color:#8a4c2b;line-height:1.2}
+      body.desktop-fit .zoom-note{font-size:clamp(1rem,.55vw + .8rem,1.3rem)}
     .top-actions{display:flex;gap:3px}
     .pill-btn{width:30px;height:28px;border:2px solid var(--brown);border-radius:999px;background:#fff3df;color:#6a3151;font-size:14px;font-weight:900;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
@@ -311,7 +313,7 @@
   <div class="cover" id="coverScreen"><div class="cover-card"><div class="cover-hero" aria-hidden="true"><div class="hero-big">🍪 🍪 🍪</div><div style="font-weight:900;color:#8a4c2b;">Count, compare, pack, and celebrate in the cookie shop!</div></div><h1 class="cover-title">Cookie Tray Shop — Numbers to 20!</h1><div class="cover-sub">Tap-friendly cookie shop number game for young learners</div><div class="cover-note"><strong>Learning goals</strong><br>Level 1 = arrange cookie bags in number order<br>Level 2 = pack the customer's cookie order exactly<br>Level 3 = fill in bakery blanks with 1 more and 1 less<br>Level 4 = add 10 more cookies for bakery orders<br>Level 5 = compare red cookies and brown cookies in the shop<br>Level 6 = compare and arrange bakery numbers within 20</div><div class="cover-actions"><button class="start-btn" id="coverStartBtn" type="button">▶ START BAKING</button></div></div></div>
 
   <div class="app" id="app">
-    <header class="topbar"><div class="top-row"><div><div class="title">Cookie Tray Shop — Numbers to 20!</div></div><div class="top-actions"><button class="pill-btn" id="soundToggleBtn" type="button">🔊</button><button class="pill-btn" id="voiceToggleBtn" type="button">🗣️</button><button class="pill-btn" id="infoBtn" type="button">📘</button></div></div><div class="score-box" id="topScoreBox">⭐ 0/20</div></header>
+    <header class="topbar"><div class="top-row"><div><div class="title">Cookie Tray Shop — Numbers to 20!</div><div class="zoom-note">Press ctrl + scroll to zoom in or out.</div></div><div class="top-actions"><button class="pill-btn" id="soundToggleBtn" type="button">🔊</button><button class="pill-btn" id="voiceToggleBtn" type="button">🗣️</button><button class="pill-btn" id="infoBtn" type="button">📘</button></div></div><div class="score-box" id="topScoreBox">⭐ 0/20</div></header>
     <div class="progress-wrap"><div class="section-label">Level Progress</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
     <div class="story-nav"><div class="story-pill active" id="pill1">1. Order</div><div class="story-pill" id="pill2">2. Bake</div><div class="story-pill" id="pill3">3. Baker</div></div>
 
