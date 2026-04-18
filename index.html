@@ -25,7 +25,7 @@
     .cover-actions{display:flex;justify-content:center;margin-top:12px}
     .start-btn{min-width:220px;padding:10px 16px;border:3px solid var(--brown);border-radius:999px;cursor:pointer;background:linear-gradient(180deg,#fff2a8,#ffb9d8);font-size:28px;font-weight:900;color:#6a3151}
 
-    .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0)}
+    .app{height:var(--app-h);max-height:var(--app-h);width:min(100%,560px);margin:0 auto;padding:max(6px,env(safe-area-inset-top)) 8px max(6px,env(safe-area-inset-bottom));display:none;flex-direction:column;gap:5px;overflow:hidden;background:linear-gradient(rgba(255,247,239,.55),rgba(255,223,240,.58)),url('cookie_shop.png') center top/cover no-repeat,linear-gradient(180deg,#fff7ef,#ffdff0);box-sizing:border-box}
     .app.show{display:flex}
     @media (min-width:768px){
       body.desktop-fit{overflow:hidden}
@@ -38,10 +38,10 @@
       body.desktop-fit .cover-note{font-size:clamp(1rem,.65vw + .65rem,1.28rem);padding:16px 18px;border-radius:22px}
       body.desktop-fit .start-btn{min-width:320px;padding:14px 22px;font-size:clamp(1.8rem,1.4vw,2.4rem)}
 
-      body.desktop-fit .app.show{position:fixed;left:50%;top:50%;width:min(1500px,calc(100vw - 32px));max-width:none;height:calc(100vh - 32px);max-height:calc(100vh - 32px);min-height:720px;margin:0;transform:translate(-50%,-50%);transform-origin:center center;will-change:auto;padding:14px 16px 12px;gap:10px;border-radius:28px;box-shadow:0 18px 48px rgba(122,53,93,.18)}
+      body.desktop-fit .app.show{position:fixed;left:6px;right:6px;top:6px;bottom:6px;width:auto;max-width:none;height:auto;max-height:none;min-height:0;margin:0;transform:none;transform-origin:center center;will-change:auto;padding:10px 12px 8px;gap:8px;border-radius:24px;box-shadow:0 18px 48px rgba(122,53,93,.18)}
       body.desktop-fit .topbar{padding:10px 14px 12px;border-radius:22px}
       body.desktop-fit .top-row{gap:14px;align-items:center}
-      body.desktop-fit .title{font-size:clamp(1.35rem,1vw + .95rem,2rem);line-height:1.05}
+      body.desktop-fit .title{font-size:clamp(1.55rem,1.15vw + 1rem,2.35rem);line-height:1.05}
       body.desktop-fit .top-actions{gap:8px}
       body.desktop-fit .pill-btn{width:44px;height:44px;font-size:22px;border-width:3px}
       body.desktop-fit .score-box{top:22px;min-width:130px;padding:8px 16px;font-size:1rem;border-width:3px}
@@ -56,8 +56,8 @@
       body.desktop-fit .frame{padding:12px;border-radius:24px}
       body.desktop-fit .frame.active{gap:10px}
       body.desktop-fit .frame-title{font-size:1.15rem}
-      body.desktop-fit .character-frame{max-width:520px;height:280px;border-radius:22px}
-      body.desktop-fit .seller-frame{max-width:520px;height:300px;border-radius:22px}
+      body.desktop-fit .character-frame{max-width:760px;height:280px;border-radius:22px}
+      body.desktop-fit .seller-frame{max-width:760px;height:300px;border-radius:22px}
       body.desktop-fit .avatar-stack{padding:14px 18px 10px;gap:8px}
       body.desktop-fit .character-art{height:226px}
       body.desktop-fit .avatar-emoji{width:180px;height:150px;font-size:100px}
@@ -204,14 +204,15 @@
     .feedback.bad{color:var(--bad)}
     .footer{text-align:center;font-size:9px;font-weight:900;opacity:.8;padding-bottom:2px;flex:0 0 auto}
 
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(70,40,20,.45);z-index:100}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(70,40,20,.45);z-index:100}
     .modal.show{display:flex}
-    .modal-card{width:min(100%,520px);max-height:88vh;overflow:auto;background:linear-gradient(180deg,#fffef9,#fff1dc);padding:16px 14px 12px;text-align:center;display:flex;flex-direction:column}
-    .modal-title{font-size:24px;font-weight:900;color:#b85b18;margin-bottom:8px}
-    .modal-badge{display:inline-block;padding:10px 16px;border-radius:999px;border:3px solid var(--brown);background:#fff9dd;font-size:18px;font-weight:900;margin:8px 0 12px}
-    .modal-line{font-size:16px;font-weight:800;line-height:1.3;margin-bottom:10px}
-    .report{width:100%;margin:0 auto 14px;background:#fff8eb;border:3px solid var(--brown);border-radius:18px;padding:12px 14px;text-align:left;font-size:15px;font-weight:800;line-height:1.4}
-    .modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;position:sticky;bottom:-2px;background:linear-gradient(180deg,rgba(255,254,249,.2),#fff1dc 28%);padding-top:10px;margin-top:8px;z-index:2}
+    .modal-card{width:min(96vw,1040px);max-height:92vh;overflow:auto;background:linear-gradient(180deg,#fffef9,#fff1dc);padding:32px 28px 24px;text-align:center;display:flex;flex-direction:column;border-radius:28px;box-shadow:0 16px 36px rgba(0,0,0,.18)}
+    .modal-title{font-size:48px;font-weight:900;color:#b85b18;margin-bottom:16px;line-height:1.1}
+    .modal-badge{display:inline-block;padding:18px 30px;border-radius:999px;border:4px solid var(--brown);background:#fff9dd;font-size:36px;font-weight:900;margin:12px 0 20px;line-height:1.1}
+    .modal-line{font-size:32px;font-weight:800;line-height:1.25;margin-bottom:18px}
+    .report{width:100%;margin:0 auto 20px;background:#fff8eb;border:4px solid var(--brown);border-radius:24px;padding:22px 24px;text-align:left;font-size:30px;font-weight:800;line-height:1.45}
+    .modal-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:sticky;bottom:-2px;background:linear-gradient(180deg,rgba(255,254,249,1),#fff1dc 28%);padding-top:16px;margin-top:12px;z-index:2}
+    .modal-actions .game-btn{font-size:22px;padding:14px 24px;min-height:64px;border-width:3px;border-radius:999px}
 
     .cookie-tray{width:min(100%,320px);background:linear-gradient(180deg,#eab47b,#c97f47);border:3px solid #7a4324;border-radius:24px;padding:8px;box-shadow:inset 0 4px 0 rgba(255,255,255,.2), inset 0 -6px 0 rgba(0,0,0,.08)}
     .cookie-grid{display:grid;gap:4px}
@@ -297,6 +298,31 @@
     body.desktop-fit .play-stage.no-picture .worksheet .work-label{font-size:56px !important;line-height:1.05 !important}
     .play-stage.no-picture .worksheet .work-row{gap:20px !important}
 
+    @media (min-width:768px){
+      .app.show{position:fixed;left:6px;right:6px;top:6px;bottom:6px;width:auto !important;max-width:none !important;height:auto !important;max-height:none !important;min-height:0;margin:0;border-radius:24px;box-shadow:0 18px 48px rgba(122,53,93,.18);padding:10px 12px 8px;gap:8px}
+      .frame,.play-stage,.main-card,.answer-panel,.reasoning-panel,.speech,.note,.feedback{width:100%;max-width:none}
+      .character-frame,.seller-frame{max-width:none;width:100%}
+      .play-stage{padding:16px 18px}
+      .controls{gap:8px}
+      .story-actions{gap:10px}
+
+      .dialogue,.help-line,.note,.speech,.feedback,.reasoning-title{font-size:28px !important;line-height:1.18 !important}
+      .equation-big{font-size:clamp(3rem,3.4vw,4.4rem) !important;line-height:1.06 !important}
+      .equation-mini{font-size:clamp(2.4rem,2.8vw,3.4rem) !important;line-height:1.08 !important}
+      .reasoning-line{font-size:2.4rem !important;line-height:1.12 !important}
+      .zoom-note{font-size:clamp(1.1rem,.8vw + .8rem,1.5rem) !important}
+
+      .game-btn{font-size:28px !important;line-height:1.05 !important;padding:12px 10px !important;min-height:78px !important}
+      .story-actions .game-btn{font-size:30px !important;min-height:72px !important;padding:12px 12px !important}
+      .option-btn{min-height:72px !important;padding:8px 6px !important}
+      .option-btn .label{font-size:42px !important;line-height:1.02 !important}
+
+      .bag-card{min-height:124px;transform:scale(1.08);transform-origin:center center}
+      .bag-number{font-size:54px !important;margin-top:14px}
+      .bag-slot{min-height:44px;font-size:24px;border-radius:14px}
+      .slot-bag-number{font-size:52px !important;margin-top:12px}
+    }
+
     @media (max-width:430px){
       .game-btn{font-size:18px !important}
       .option-btn .label{font-size:28px !important}
@@ -340,7 +366,7 @@
 
   <div class="modal" id="infoModal"><div class="modal-card"><div class="modal-title">Game Info</div><div class="report"><strong>Level 1</strong> — Arrange cookie bags in order<br><strong>Level 2</strong> — Pack the cookie order<br><strong>Level 3</strong> — Fill in bakery blanks with 1 more and 1 less<br><strong>Level 4</strong> — Add 10 more cookies<br><strong>Level 5</strong> — Compare red and brown cookies<br><strong>Level 6</strong> — Compare and arrange bakery numbers within 20<br><br>Voice instructions use the browser's speech feature and will try to use a UK female English voice when one is available on the device.</div><div class="modal-actions"><button class="game-btn btn-check" id="closeInfoBtn" type="button">✔ Close</button></div></div></div>
 
-  <div class="modal" id="roundModal"><div class="modal-card"><div class="modal-title" id="roundTitle">Level Complete!</div><div class="modal-badge" id="roundBadge">Cookie Star</div><div id="rewardCookieWrap" style="display:none;text-align:center;margin:8px 0 10px;"><div id="rewardCookieArt" style="width:120px;height:120px;margin:0 auto 8px;border-radius:50%;border:5px solid #8a4c2b;background:radial-gradient(circle at 34% 34%, #f6d39a 0 36%, #c27b42 37% 100%);position:relative;box-shadow:0 8px 20px rgba(122,53,93,.18);"></div><div id="rewardCookieName" style="font-weight:900;color:#b03f75;font-size:18px;"></div></div><div class="report" id="roundReport"></div><div class="modal-line" id="roundLine">Great work!</div><div class="modal-actions" id="roundActions"></div></div></div>
+  <div class="modal" id="roundModal"><div class="modal-card"><div class="modal-title" id="roundTitle">Level Complete!</div><div class="modal-badge" id="roundBadge">Cookie Star</div><div id="rewardCookieWrap" style="display:none;text-align:center;margin:16px 0 20px;"><div id="rewardCookieArt" style="width:240px;height:240px;margin:0 auto 14px;border-radius:50%;border:8px solid #8a4c2b;background:radial-gradient(circle at 34% 34%, #f6d39a 0 36%, #c27b42 37% 100%);position:relative;box-shadow:0 12px 28px rgba(122,53,93,.18);"></div><div id="rewardCookieName" style="font-weight:900;color:#b03f75;font-size:36px;line-height:1.2;"></div></div><div class="report" id="roundReport"></div><div class="modal-line" id="roundLine">Great work!</div><div class="modal-actions" id="roundActions"></div></div></div>
 
   <script>
     function setAppHeight(){document.documentElement.style.setProperty('--app-h',window.innerHeight+'px')} 
